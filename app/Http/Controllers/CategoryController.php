@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\cateory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -28,7 +29,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules=[
+            'cat_name' => 'required|min:5',
+            'cat_des' => 'required|min:5',
+            'cat_img' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ];
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()){
+            return redirect()->route('category.create')->withInput()->withErrors($validator);
+        }
     }
 
     /**
