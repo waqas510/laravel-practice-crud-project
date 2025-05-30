@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\cateory;
+use App\Models\category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view("index");
     }
 
     /**
@@ -39,6 +39,7 @@ class CategoryController extends Controller
         if ($validator->fails()){
             return redirect()->route('category.create')->withInput()->withErrors($validator);
         }
+        category::create($request->all());
     }
 
     /**
@@ -46,7 +47,8 @@ class CategoryController extends Controller
      */
     public function show(category $category)
     {
-        //
+        $res = $category->all();
+        return view('category.show',['res'=> $res]);
     }
 
     /**
