@@ -11,6 +11,7 @@
         <h3 class="text-white text-center">Hafiz Waqas jadon</h3>
         <h6 class="text-white text-center">Crud practice project</h6>
     </div>
+    <a href="{{ route('index') }}" class="btn btn-success mt-4 ms-4">Home Page</a>
     <div class="conatiner mt-5">
         <div class="row d-flex justify-content-center">
             <div class="col-md-8 border-0 shadow-lg">

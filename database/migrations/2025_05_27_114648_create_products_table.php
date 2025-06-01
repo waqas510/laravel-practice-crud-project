@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('pro_qty');
             $table->text('pro_des')->nullable();
             $table->string('pro_img');
-            $table->foreignId('cat_id')->constrained('categories')->onDelete('cascade');
+            $table->integer('cat_id');
+            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
